@@ -8,35 +8,15 @@ page-profile {
       width: 100px;
       height: 100px;
       object-fit: contain;
-    }
+  }
 
-    .CheckShape {
-      width: 17.9px;
-      height: 12.9px;
-      opacity: 0.9;
-      background-color: #ffffff;
-    }
+  .Rectangle-path {
+    width: 24px;
+    height: 24px;
+  }
 
-    .CrossShape {
-      width: 15.2px;
-      height: 15.2px;
-      opacity: 0.9;
-      background-color: #ffffff;
-    }
-
-    .StartShape {
-      width: 12px;
-      height: 22.5px;
-      background-color: #000000;
-    }
-
-    .Rectangle-path {
-      width: 24px;
-      height: 24px;
-    }
-
-    ion-icon{
-      font-size: 2em
-    }
+  ion-icon{
+    font-size: 2em
+  }
 
 }
