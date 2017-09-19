@@ -1,0 +1,26 @@
+<ion-header>
+        <div class="gradient-header">
+    <!--        <ion-toolbar transparent>-->
+                <ion-searchbar 
+                        #ionSearchbar
+                        [(ngModel)]="autocomplete.query" 
+                        [showCancelButton]="false" 
+                        placeholder="{{placeholder | async}}"
+                        (ionInput)="updateSearch()" 
+                        autofocus>
+                </ion-searchbar>
+    <!--        </ion-toolbar>-->
+        </div>
+    </ion-header>
+    <ion-content>
+        <ion-list>
+            <ion-item style="color: darkslategrey" *ngFor="let item of autocompleteItems" tappable (click)="chooseItem(item)">
+                {{ item.description }}
+            </ion-item>
+            <img src="assets/google/desktop/powered_by_google_on_non_white_hdpi.png">
+        </ion-list>
+    
+        <ion-fab right bottom>   
+            <button ion-fab (click)="dismissView()"><ion-icon name="arrow-back"></ion-icon></button>
+        </ion-fab>
+    </ion-content>

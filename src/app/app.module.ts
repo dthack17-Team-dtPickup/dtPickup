@@ -24,6 +24,7 @@ import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { SignupUserModule } from "../setup-pages/signup-user/signup-user.module";
 import { ProfilePage } from '../pages/profile/profile';
+import { AddRideTemplatePage } from "../pages/add-ride-template/add-ride-template";
 
 
 
@@ -35,8 +36,8 @@ import { ProfilePage } from '../pages/profile/profile';
     HomePage,
     ListPage,
     LoginUserPage,
-    ProfilePage
-  
+    ProfilePage,
+    AddRideTemplatePage
   ],
   imports: [
     BrowserModule,
@@ -53,6 +54,7 @@ import { ProfilePage } from '../pages/profile/profile';
     ListPage,
     ProfilePage,
     LoginUserPage,
+    AddRideTemplatePage
   ],
   providers: [
     StatusBar,
