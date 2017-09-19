@@ -24,7 +24,9 @@ export class ProfileService {
             coords:[0,1],
             id:'1337',
             name:'Haupstraße 36'
-        } }
+        },
+        routes:[]
+     }
     ];
 
 
@@ -36,7 +38,9 @@ export class ProfileService {
             coords:[0,1],
             id:'1337',
             name:'Haupstraße 36'
-        } }
+        },
+        routes:[] 
+    }
     }
 
     getProfileFromId(id: string): Observable<any>{

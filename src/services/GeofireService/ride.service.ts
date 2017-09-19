@@ -1,23 +1,25 @@
 import { Injectable } from '@angular/core';
-import { AngularFireDatabase } from 'angularfire2/database';
+import { AngularFireDatabase, FirebaseListObservable } from 'angularfire2/database';
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 import { Ride } from './ride';
 import { Observable } from 'rxjs/Observable';
-import {GeoService} from './geofire.service'
+import { GeoService } from './geofire.service'
 import 'rxjs/add/operator/take';
 
 @Injectable()
 export class RideService{
 
     
-    geoService : GeoService;
+    
     dbRef: any;
     hits = new BehaviorSubject([])
+    items: FirebaseListObservable<any[]>;
 
-    constructor(private db: AngularFireDatabase) {
+    constructor(private db: AngularFireDatabase, private geoService: GeoService) {
+        
         /// Reference database location for GeoFire
         this.dbRef = this.db.list('/rides');
-        let geoService = new GeoService(db);
+       
 
     }
 
@@ -56,8 +58,9 @@ export class RideService{
         return this.db.object(`rides/${id}`).take(1)
     }
 
-    addRide(ride: Ride) {
-        this.dbRef.database.ref(ride.key).set(ride);
+    addRidf(ride: Ride) {
+        const itemObservable = this.dbRef;
+        this.dbRef.database.ref(ride.key).set(ride).then;
         ride.locations.forEach(location => {
             this.geoService.setLocation(location.id,location.coords);
         });
@@ -65,13 +68,21 @@ export class RideService{
         return true;
     }
 
+    addRide(form_params){
+        console.log(form_params)
+    }
+
+
     cancelRide(id: string){
        
         let tempRide = this.dbRef.database.ref(id).once();
         
            
         
-        this.dbRef.database.ref(id).remove();
+        const promise = this.dbRef.database.ref(id).remove();
+        promise
+        .then(_ => console.log('success'))
+        .catch(err => console.log(err, 'You dont have access!'));
         return true;
     }
 
