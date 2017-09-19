@@ -24,6 +24,7 @@ import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { SignupUserModule } from "../setup-pages/signup-user/signup-user.module";
 import { ProfilePage } from '../pages/profile/profile';
+import { ProfileService } from '../services/ProfileService/profile.service';
 
 
 
@@ -59,6 +60,7 @@ import { ProfilePage } from '../pages/profile/profile';
     SplashScreen,
     AuthService,
     GeoService,
+    ProfileService,
     {provide: ErrorHandler, useClass: IonicErrorHandler}
   ]
 })

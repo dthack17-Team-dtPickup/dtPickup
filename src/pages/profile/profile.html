@@ -9,7 +9,7 @@
 
 <ion-content padding>
   <ion-grid>
-    <ion-row>
+    <ion-row align-items-center>
       <ion-col align-items-center>
         <img src="assets/img/person-picture@1x.png" srcset="assets/img/person-picture@2x.png 2x,
         assets/img/person-picture@3x.png 3x,
@@ -18,28 +18,28 @@
     </ion-row>
     <ion-row>
       <ion-col align-items-center>
-        <div>{{fullname}}</div>
+        <div>{{user_profile.name}}</div>
       </ion-col>
     </ion-row>
     <ion-row>
       <ion-col align-items-center>
-        <div>{{company}}</div>
+        <div>{{user_profile?.company}}</div>
       </ion-col>
     </ion-row>
     <ion-row>
       <ion-col align-items-center>
-        <div>{{rating}}</div>
+        <div>{{user_profile.rating}}</div>
       </ion-col>
     </ion-row>
   </ion-grid>
-  <ion-list>
+  <ion-list *ngFor="let template of templates">
     <button ion-item>
       <span class="CheckShape"></span>
-      <div>Fahrer</div>
+      <div>{{template.type}}</div>
       <span class="StartShape"></span>
-      <div>Sandstr. 13, Wachtberg</div>
+      <div>{{template.startpoint}}</div>
       <span class="FinishShape"></span>
-      <div>Landgrabenweg 151, Bonn</div>
+      <div>{{template.endpoint}}</div>
     </button>
   </ion-list>
 </ion-content>
