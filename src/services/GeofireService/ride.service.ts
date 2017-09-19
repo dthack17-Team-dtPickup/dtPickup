@@ -3,17 +3,21 @@ import { AngularFireDatabase } from 'angularfire2/database';
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 import { Ride } from './ride';
 import { Observable } from 'rxjs/Observable';
+import {GeoService} from './geofire.service'
 import 'rxjs/add/operator/take';
 
 @Injectable()
 export class RideService{
 
+    
+    geoService : GeoService;
     dbRef: any;
     hits = new BehaviorSubject([])
 
     constructor(private db: AngularFireDatabase) {
         /// Reference database location for GeoFire
         this.dbRef = this.db.list('/rides');
+        let geoService = new GeoService(db);
 
     }
 
@@ -45,6 +49,7 @@ export class RideService{
         free_seats:1,
         members:['0002','0003'] 
     }
+
     }
 
     getRideFromId(id: string): Observable<any>{
@@ -53,10 +58,19 @@ export class RideService{
 
     addRide(ride: Ride) {
         this.dbRef.database.ref(ride.key).set(ride);
+        ride.locations.forEach(location => {
+            this.geoService.setLocation(location.id,location.coords);
+        });
+        
         return true;
     }
 
     cancelRide(id: string){
+       
+        let tempRide = this.dbRef.database.ref(id).once();
+        
+           
+        
         this.dbRef.database.ref(id).remove();
         return true;
     }
