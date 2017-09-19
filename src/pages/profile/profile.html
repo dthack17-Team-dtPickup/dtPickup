@@ -8,30 +8,12 @@
 </ion-header>
 
 <ion-content padding>
-  <ion-grid>
-    <ion-row align-items-center>
-      <ion-col align-items-center>
-        <img src="assets/img/person-picture@1x.png" srcset="assets/img/person-picture@2x.png 2x,
-        assets/img/person-picture@3x.png 3x,
-        assets/img/person-picture@4x.png 4x" class="Oval">
-      </ion-col>
-    </ion-row>
-    <ion-row>
-      <ion-col align-items-center>
-        <div>{{user_profile.name}}</div>
-      </ion-col>
-    </ion-row>
-    <ion-row>
-      <ion-col align-items-center>
-        <div>{{user_profile?.company}}</div>
-      </ion-col>
-    </ion-row>
-    <ion-row>
-      <ion-col align-items-center>
-        <ion-icon *ngFor="let i of user_profile.rating | fill" name="star"></ion-icon>
-      </ion-col>
-    </ion-row>
-  </ion-grid>
+  <div text-center><img src="assets/img/person-picture@1x.png" srcset="assets/img/person-picture@2x.png 2x,
+  assets/img/person-picture@3x.png 3x,
+  assets/img/person-picture@4x.png 4x" class="Oval"></div>
+  <div class="ProfileFullName" text-center>{{user_profile.first_name}} {{user_profile.name}}</div>
+  <div text-center>{{user_profile?.company}}</div>
+  <div text-center><ion-icon *ngFor="let i of user_profile.rating | fill" name="star" color="star" width="22px" height="22px"></ion-icon></div>
   <ion-list *ngFor="let template of templates">
     <button ion-item>
       <img src="assets/img/voluntarily_graphical.svg" class="CheckShape"/>
