@@ -27,6 +27,7 @@ import { AddRideTemplatePage } from "../pages/add-ride-template/add-ride-templat
 import { ProfileService } from '../services/ProfileService/profile.service';
 import { FillPipe } from '../pipes/pipes';
 import { RideTemplateService } from '../services/RideTemplateService/ride.template.service';
+import { RideService } from '../services/RideService/ride.service';
 
 @NgModule({
   declarations: [
@@ -60,6 +61,7 @@ import { RideTemplateService } from '../services/RideTemplateService/ride.templa
     GeoService,
     ProfileService,
     RideTemplateService,
+    RideService,
     { provide: ErrorHandler, useClass: IonicErrorHandler }
   ]
 })
