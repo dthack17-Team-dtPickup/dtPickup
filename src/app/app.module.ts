@@ -17,7 +17,6 @@ import { DtPickup } from './app.component';
 // Application Pages
 import { LoginUserPage } from "../setup-pages/login-user/login-user";
 import { HomePage } from '../pages/home/home';
-import { ListPage } from '../pages/list/list';
 
 //Ionic Native Modules
 import { StatusBar } from '@ionic-native/status-bar';
@@ -32,7 +31,6 @@ import { FillPipe } from '../pipes/pipes';
   declarations: [
     DtPickup,
     HomePage,
-    ListPage,
     LoginUserPage,
     ProfilePage,
     AddRideTemplatePage,
@@ -50,7 +48,6 @@ import { FillPipe } from '../pipes/pipes';
   entryComponents: [
     DtPickup,
     HomePage,
-    ListPage,
     ProfilePage,
     LoginUserPage,
     AddRideTemplatePage
