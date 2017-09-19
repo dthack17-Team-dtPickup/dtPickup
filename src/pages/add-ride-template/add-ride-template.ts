@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { ModalController } from "ionic-angular";
 import { SetLocationPage } from "../set-location/set-location";
-import { RideService } from "../../services/RideService/ride.service";
+import { RideService } from "../../services/GeofireService/ride.service";
 
 @Component({
   selector: 'add-ride-template',
@@ -48,7 +48,7 @@ export class AddRideTemplatePage {
       date: this.date
     }
 
-    this.rideService.addRide()
+    this.rideService.addRide(ride_data)
   }
 
 
