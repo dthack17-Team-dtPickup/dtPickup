@@ -16,11 +16,11 @@ export class RideService{
     hits = new BehaviorSubject([])
     items: FirebaseListObservable<any[]>;
 
-    constructor(private db: AngularFireDatabase, private geoService: GeoService) {
+    constructor(private db: AngularFireDatabase, private geoService: GeoService, profileService: ProfileService) {
         
         /// Reference database location for GeoFire
         this.dbRef = this.db.list('/rides');
-       
+       this.profileService = profileService;
 
     }
 
