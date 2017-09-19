@@ -6,7 +6,16 @@ import { Profile } from './profile';
 @Injectable()
 export class ProfileService {
 
- 
 
+
+
+ getProfile(id: string){
+
+ }
+
+
+addProfile(profile:Profile){
+    
+}
 
 }
