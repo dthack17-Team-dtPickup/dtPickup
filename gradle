@@ -1,0 +1,15 @@
+build.gradle project
+
+buildscript {
+  dependencies {
+    // Add this line
+    classpath 'com.google.gms:google-services:3.1.0'
+  }
+}
+
+
+
+buil.gradle app
+
+// Add to the bottom of the file
+apply plugin: 'com.google.gms.google-services'
