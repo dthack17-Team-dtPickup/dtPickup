@@ -3,25 +3,43 @@
     <button ion-button menuToggle>
       <ion-icon name="menu"></ion-icon>
     </button>
-    <ion-title>Profile</ion-title>
+    <ion-title>Your Profile</ion-title>
   </ion-navbar>
 </ion-header>
 
 <ion-content padding>
-    <center>
-        <img src="img/person-picture.png"
-          srcset="img/person-picture@2x.png 2x,
-                  img/person-picture@3x.png 3x,
-                  img/person-picture@2x.png 4x"
-          class="Oval">
-          <div>{{fullname}}</div>
-          <div>{{company}}</div>
-          <div>{{rating}}</div>
-        </center>
-        <ion-list>
-          <button>
-            
-          </button>
-        </ion-list>
-
+  <ion-grid>
+    <ion-row align-items-center>
+      <ion-col align-items-center>
+        <img src="assets/img/person-picture@1x.png" srcset="assets/img/person-picture@2x.png 2x,
+        assets/img/person-picture@3x.png 3x,
+        assets/img/person-picture@4x.png 4x" class="Oval">
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col align-items-center>
+        <div>{{user_profile.name}}</div>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col align-items-center>
+        <div>{{user_profile?.company}}</div>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col align-items-center>
+        <ion-icon *ngFor="let i of user_profile.rating | fill" name="star"></ion-icon>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+  <ion-list *ngFor="let template of templates">
+    <button ion-item>
+      <img src="assets/img/voluntarily_graphical.svg" class="CheckShape"/>
+      <div>{{template.type}}</div>
+      <img src="assets/img/arrow-target_solid.svg"  class="StartShape"/>
+      <div>{{template.startpoint}}</div>
+      <img src="assets/img/arrow-target_solid.svg"  class="FinishShape"/>
+      <div>{{template.endpoint}}</div>
+    </button>
+  </ion-list>
 </ion-content>
