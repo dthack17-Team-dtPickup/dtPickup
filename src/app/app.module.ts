@@ -23,6 +23,7 @@ import { ListPage } from '../pages/list/list';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { SignupUserModule } from "../setup-pages/signup-user/signup-user.module";
+import { ProfilePage } from '../pages/profile/profile';
 
 
 
@@ -34,6 +35,7 @@ import { SignupUserModule } from "../setup-pages/signup-user/signup-user.module"
     HomePage,
     ListPage,
     LoginUserPage,
+    ProfilePage
   
   ],
   imports: [
@@ -49,6 +51,7 @@ import { SignupUserModule } from "../setup-pages/signup-user/signup-user.module"
     DtPickup,
     HomePage,
     ListPage,
+    ProfilePage,
     LoginUserPage,
   ],
   providers: [
