@@ -9,15 +9,51 @@
 
 <ion-content>
   <ion-list>
-    <button ion-item *ngFor="let item of items" (click)="itemTapped($event, item)">
-      <ion-icon [name]="item.icon" item-left></ion-icon>
-      {{item.title}}
-      <div class="item-note" item-right>
-        {{item.note}}
-      </div>
-    </button>
+    <ion-item  ion-item *ngFor="let item of items" (click)="itemTapped($event, item)">
+    <ion-thumbnail  item-start>
+      <img src="https://api.adorable.io/avatars/dtPickup">
+      </ion-thumbnail>
+      <h2>Neighbor Totoro</h2>
+      <p> <strong>Von: </strong> Hayao Miyazaki • 1988</p>
+      <p> <strong>Nach: </strong> Telekom Hauptzentrale </p>
+      <p> <strong>Von: </strong> Hayao Miyazaki • 1988</p>
+      <p> <strong>Nach: </strong> Telekom Hauptzentrale </p>
+      <button ion-button clear item-end>View</button>
+    </ion-item>
   </ion-list>
   <div *ngIf="selectedItem" padding>
     You navigated here from <b>{{selectedItem.title}}</b>
   </div>
+
+  <ion-card *ngFor="let item of items" (click)="itemTapped($event, item)">
+      
+        <ion-item>
+          <ion-avatar item-start>
+            <img src="https://api.adorable.io/avatars/dtPickup">
+          </ion-avatar>
+          <h2>Marty McFly</h2>
+          <p>November 5, 1955</p>
+        </ion-item>
+        <hr>  
+        
+        <ion-card-content>
+            <p> <strong>Von: </strong> Hayao Miyazaki • 1988</p>
+            <p> <strong>Nach: </strong> Telekom Hauptzentrale </p>
+            <p> <strong>Von: </strong> Hayao Miyazaki • 1988</p>
+            <p> <strong>Nach: </strong> Telekom Hauptzentrale </p>
+        </ion-card-content>
+        <hr>
+        <ion-row>
+          <ion-col>
+            <button ion-button icon-left clear small>
+              <div>Mitfahrt Anfragen</div>
+            </button>
+          </ion-col>
+          <ion-col center text-center>
+            <ion-note>
+              11h ago
+            </ion-note>
+          </ion-col>
+        </ion-row>
+  </ion-card>
 </ion-content>

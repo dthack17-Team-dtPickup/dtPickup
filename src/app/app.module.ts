@@ -7,6 +7,10 @@ import { AngularFireDatabaseModule } from 'angularfire2/database';
 import { AngularFireAuthModule } from 'angularfire2/auth';
 import { FirebaseModule } from "./app.firebase.config";
 
+//database services 
+import { AuthService } from "../services/AuthService/auth.service";
+import { GeoService } from "../services/GeofireService/geofire.service";
+
 //main app Component
 import { DtPickup } from './app.component';
 
@@ -18,8 +22,9 @@ import { ListPage } from '../pages/list/list';
 //Ionic Native Modules
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
-import { AuthService } from "../setup-pages/services/auth.service";
 import { SignupUserModule } from "../setup-pages/signup-user/signup-user.module";
+
+
 
 
 
@@ -50,6 +55,7 @@ import { SignupUserModule } from "../setup-pages/signup-user/signup-user.module"
     StatusBar,
     SplashScreen,
     AuthService,
+    GeoService,
     {provide: ErrorHandler, useClass: IonicErrorHandler}
   ]
 })
