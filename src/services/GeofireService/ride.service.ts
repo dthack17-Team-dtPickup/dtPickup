@@ -5,12 +5,13 @@ import { Ride } from './ride';
 import { Observable } from 'rxjs/Observable';
 import { GeoService } from './geofire.service'
 import 'rxjs/add/operator/take';
+import { ProfileService } from '../ProfileService/profile.service';
 
 @Injectable()
 export class RideService{
 
     
-    
+    profileService: ProfileService;
     dbRef: any;
     hits = new BehaviorSubject([])
     items: FirebaseListObservable<any[]>;
@@ -34,22 +35,60 @@ export class RideService{
             car: { id: '0001', make: 'Opel', model: 'Astra', colour: 'blue', seats: 5 }, 
             creator:'0001',
             free_seats:1,
-            members:['0002','0003'] 
-        }
+            passengers:['0002','0003'],
+            pickupTime: '20.09.2017, 09:00 Uhr',
+            driverId:'0001',
+            driver:{}
+
+        },
+        {key:'0002',
+        locations:[{coords:[11,0], id:'0001',name:'Bushaltestalle B9'},
+        {coords:[11,0], id:'0001',name:'Bushaltestalle B9'}],
+        destination:{coords:[11,0], id:'0001',name:'Bushaltestalle B9'},
+        start_location:{coords:[11,0],id:'0001',name:'Bushaltestalle B9'},
+        current_location:{coords:[11,0,3],id:'0001',name:'current'},
+        car: { id: '0001', make: 'Opel', model: 'Astra', colour: 'blue', seats: 5 }, 
+        creator:'0001',
+        free_seats:1,
+        passengers:['0002','0003'],
+        pickupTime: '20.09.2017, 09:00 Uhr',
+        driverId:'0001',
+        driver:{}
+
+    },
+    {key:'0003',
+    locations:[{coords:[11,0], id:'0001',name:'Bushaltestalle B9'},
+    {coords:[11,0], id:'0001',name:'Bushaltestalle B9'}],
+    destination:{coords:[11,0], id:'0001',name:'Bushaltestalle B9'},
+    start_location:{coords:[11,0],id:'0001',name:'Bushaltestalle B9'},
+    current_location:{coords:[11,0,3],id:'0001',name:'current'},
+    car: { id: '0001', make: 'Opel', model: 'Astra', colour: 'blue', seats: 5 }, 
+    creator:'0001',
+    free_seats:1,
+    passengers:['0002','0003'],
+    pickupTime: '20.09.2017, 09:00 Uhr',
+    driverId:'0001',
+    driver:{}
+
+}
     ];
 
 
     getRide(id: string) {
-        return {key:'0001',
+        return  {key:'0001',
         locations:[{coords:[11,0], id:'0001',name:'Bushaltestalle B9'},
         {coords:[11,0], id:'0001',name:'Bushaltestalle B9'}],
         destination:{coords:[11,0], id:'0001',name:'Bushaltestalle B9'},
-        car: { id: '0001', make: 'Opel', model: 'Astra', colour: 'blue', seats: 5 }, 
         start_location:{coords:[11,0],id:'0001',name:'Bushaltestalle B9'},
         current_location:{coords:[11,0,3],id:'0001',name:'current'},
+        car: { id: '0001', make: 'Opel', model: 'Astra', colour: 'blue', seats: 5 }, 
         creator:'0001',
         free_seats:1,
-        members:['0002','0003'] 
+        passengers:['0002','0003'],
+        pickupTime: '20.09.2017, 09:00 Uhr',
+        driverId:'0001',
+        driver:{}
+
     }
 
     }
@@ -84,6 +123,19 @@ export class RideService{
         .then(_ => console.log('success'))
         .catch(err => console.log(err, 'You dont have access!'));
         return true;
+    }
+
+
+
+
+    getAcceptedRides(profileId: string) {
+        let res = this.RIDE;
+        let me = this;
+        res.forEach(function(ride) {
+            var driver = me.profileService.getProfile(ride.driverId);
+            ride.driver = driver;
+        });
+        return res;
     }
 
 }
