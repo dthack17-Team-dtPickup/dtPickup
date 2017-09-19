@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
 import { ListPage } from "../list/list";
-import { AddProfilePage } from '../add-profile/add-profile';
+import { AddRideTemplatePage } from '../add-ride-template/add-ride-template';
 
 @Component({
   selector: 'page-home',
@@ -18,7 +18,7 @@ export class HomePage {
   }
 
   openAddProfile(){
-    this.navCtrl.push(AddProfilePage)
+    this.navCtrl.push(AddRideTemplatePage)
   }
 
 }

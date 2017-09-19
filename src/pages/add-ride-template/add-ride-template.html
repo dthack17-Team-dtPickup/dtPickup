@@ -1,23 +1,23 @@
 <ion-header>
-    <ion-navbar>
+  <ion-navbar>
 
-        <ion-title>Create Ride Template </ion-title>
+    <ion-title>Create Ride Template </ion-title>
 
-    </ion-navbar>
+  </ion-navbar>
 </ion-header>
 
 <ion-content>
-        <ion-list>
-                
-                  <ion-item>
-                    <ion-label floating>Startort: </ion-label>
-                    <ion-input type="text"></ion-input>
-                  </ion-item>
-                
-                  <ion-item>
-                    <ion-label floating>Zielort: </ion-label>
-                    <ion-input type="password"></ion-input>
-                  </ion-item>
-                
-                </ion-list>
+  <ion-list>
+
+    <ion-item (click)="openAddressModal('start')">
+      <ion-label floating>Startort: </ion-label>
+      <ion-input type="text"></ion-input>
+    </ion-item>
+
+    <ion-item (click)="openAddressModal('destination')">
+      <ion-label floating>Zielort: </ion-label>
+      <ion-input type="password"></ion-input>
+    </ion-item>
+
+  </ion-list>
 </ion-content>
