@@ -26,6 +26,7 @@ import { ProfilePage } from '../pages/profile/profile';
 import { AddRideTemplatePage } from "../pages/add-ride-template/add-ride-template";
 import { ProfileService } from '../services/ProfileService/profile.service';
 import { FillPipe } from '../pipes/pipes';
+import { SetLocationPage } from "../pages/set-location/set-location";
 
 @NgModule({
   declarations: [
@@ -33,6 +34,7 @@ import { FillPipe } from '../pipes/pipes';
     HomePage,
     LoginUserPage,
     ProfilePage,
+    SetLocationPage,
     AddRideTemplatePage,
     FillPipe
   ],
@@ -48,6 +50,7 @@ import { FillPipe } from '../pipes/pipes';
   entryComponents: [
     DtPickup,
     HomePage,
+    SetLocationPage,
     ProfilePage,
     LoginUserPage,
     AddRideTemplatePage

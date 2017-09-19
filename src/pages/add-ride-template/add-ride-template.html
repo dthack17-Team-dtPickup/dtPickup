@@ -7,17 +7,43 @@
 </ion-header>
 
 <ion-content>
-  <ion-list>
 
+  <div padding>
+      <ion-segment [(ngModel)]="type">
+        <ion-segment-button value="driver">
+          Fahrer
+        </ion-segment-button>
+        <ion-segment-button value="passenger">
+          Mitfahrer
+        </ion-segment-button>
+      </ion-segment>
+  </div>
+
+  <ion-list padding>
+    
     <ion-item (click)="openAddressModal('start')">
-      <ion-label floating>Startort: </ion-label>
-      <ion-input type="text"></ion-input>
+      <ion-label >Startort: </ion-label>
+      <ion-input disabled [(ngModel)]="start_loaction.description" type="text"></ion-input>
     </ion-item>
 
     <ion-item (click)="openAddressModal('destination')">
-      <ion-label floating>Zielort: </ion-label>
-      <ion-input type="password"></ion-input>
+      <ion-label >Zielort: </ion-label>
+      <ion-input disabled [(ngModel)]="destination_location.description" type="text"></ion-input>
     </ion-item>
 
+  
+    <ion-item>
+        <ion-label >Datum: </ion-label>
+        <ion-datetime displayFormat="MMM .DD. YYYY" pickerFormat="DD MM YYYY" [(ngModel)]="date"></ion-datetime>
+    </ion-item>
+
+    <ion-item >
+        <ion-label >Uhrzeit: </ion-label>
+        <ion-datetime displayFormat="HH:mm" pickerFormat="HH : mm" [(ngModel)]="time"></ion-datetime>
+    </ion-item>
   </ion-list>
 </ion-content>
+
+<ion-footer>
+  <button ion-button full color="green"> Speichern</button>
+</ion-footer>

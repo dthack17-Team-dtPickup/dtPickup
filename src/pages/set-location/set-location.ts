@@ -8,7 +8,7 @@ import { BehaviorSubject } from "rxjs/";
   templateUrl: 'set-location.html',
 })
 
-export class FindLocationPage  implements OnInit{
+export class SetLocationPage  implements OnInit{
     autocompleteItems;
     autocomplete;
 
@@ -27,7 +27,7 @@ export class FindLocationPage  implements OnInit{
 
     ngOnInit(){
         this.only_cities = this.params.get('limitToCities') 
-        this.placeholder.next(this.only_cities ? 'Stadt eingeben' : 'Adresse eingeben')
+        this.placeholder.next( 'Adresse eingeben')
     }
 
 
@@ -65,8 +65,7 @@ export class FindLocationPage  implements OnInit{
             return;
         }
         let me = this;
-        const query = (this.only_cities) ? { input: this.autocomplete.query, componentRestrictions: { country: 'DE' }, types: ['(cities)'] } 
-                                         : { input: this.autocomplete.query, componentRestrictions: { country: 'DE' } }
+        const query = { input: this.autocomplete.query, componentRestrictions: { country: 'DE' } }
         this.service.getPlacePredictions(query, function (predictions, status) {
             me.autocompleteItems = [];
             me.zone.run(() => {
