@@ -51,12 +51,13 @@ export class RideService{
         return this.db.object(`rides/${id}`).take(1)
     }
 
-    addProfile(ride: Ride) {
-       
+    addRide(ride: Ride) {
+        this.dbRef.database.ref(ride.key).set(ride);
         return true;
     }
 
     cancelRide(id: string){
+        this.dbRef.database.ref(id).remove();
         return true;
     }
 

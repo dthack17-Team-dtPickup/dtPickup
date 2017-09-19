@@ -44,7 +44,7 @@ export class ProfileService {
     }
 
     addProfile(profile: Profile) {
-        this.db.object;
+        this.dbRef.database.ref(profile.id).set(profile);
         return true;
     }
 
