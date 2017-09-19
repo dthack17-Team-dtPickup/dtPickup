@@ -26,12 +26,9 @@ import { ProfilePage } from '../pages/profile/profile';
 import { AddRideTemplatePage } from "../pages/add-ride-template/add-ride-template";
 import { ProfileService } from '../services/ProfileService/profile.service';
 import { FillPipe } from '../pipes/pipes';
-<<<<<<< HEAD
 import { SetLocationPage } from "../pages/set-location/set-location";
-=======
 import { RideTemplateService } from '../services/RideTemplateService/ride.template.service';
 import { RideService } from '../services/RideService/ride.service';
->>>>>>> 9b70dd25fe875b8dc1481ed4c8bb9ea89aece3ee
 
 @NgModule({
   declarations: [
@@ -59,7 +56,7 @@ import { RideService } from '../services/RideService/ride.service';
     ProfilePage,
     LoginUserPage,
     AddRideTemplatePage
-  ],
+  ], 
   providers: [
     StatusBar,
     SplashScreen,

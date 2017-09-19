@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { ModalController } from "ionic-angular";
 import { SetLocationPage } from "../set-location/set-location";
+import { RideService } from "../../services/RideService/ride.service";
 
 @Component({
   selector: 'add-ride-template',
@@ -14,7 +15,7 @@ export class AddRideTemplatePage {
   type: string = 'driver';
   date: any =  new Date().toISOString()
   time: string = '08:00'
-  constructor(private modalCtrl: ModalController) {
+  constructor(private modalCtrl: ModalController,private rideService: RideService) {
 
   }
 
@@ -37,6 +38,17 @@ export class AddRideTemplatePage {
 
     modal.present()
     
+  }
+
+  saveRide(){
+    const ride_data =  {
+      start_location: this.start_loaction,
+      destination_location: this.destination_location,
+      time: this.time,
+      date: this.date
+    }
+
+    this.rideService.addRide()
   }
 
 
