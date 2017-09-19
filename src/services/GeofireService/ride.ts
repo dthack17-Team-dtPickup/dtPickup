@@ -1,4 +1,5 @@
 import {Location} from './location';
+import {Car} from '../ProfileService/car';
 
 export class Ride {
     key:string;
@@ -9,6 +10,7 @@ export class Ride {
     creator:string;
     free_seats:number;
     members:string[];
+    car:Car;
     
 
 

@@ -25,6 +25,7 @@ export class RideService{
             destination:{coords:[11,0], id:'0001',name:'Bushaltestalle B9'},
             start_location:{coords:[11,0],id:'0001',name:'Bushaltestalle B9'},
             current_location:{coords:[11,0,3],id:'0001',name:'current'},
+            car: { id: '0001', make: 'Opel', model: 'Astra', colour: 'blue', seats: 5 }, 
             creator:'0001',
             free_seats:1,
             members:['0002','0003'] 
@@ -37,6 +38,7 @@ export class RideService{
         locations:[{coords:[11,0], id:'0001',name:'Bushaltestalle B9'},
         {coords:[11,0], id:'0001',name:'Bushaltestalle B9'}],
         destination:{coords:[11,0], id:'0001',name:'Bushaltestalle B9'},
+        car: { id: '0001', make: 'Opel', model: 'Astra', colour: 'blue', seats: 5 }, 
         start_location:{coords:[11,0],id:'0001',name:'Bushaltestalle B9'},
         current_location:{coords:[11,0,3],id:'0001',name:'current'},
         creator:'0001',

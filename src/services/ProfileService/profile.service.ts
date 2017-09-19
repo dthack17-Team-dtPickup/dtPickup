@@ -18,14 +18,25 @@ export class ProfileService {
     }
 
     PROFILES: Profile[] = [
-        { id: '0001', name: 'Rüdiger', rating: 4, car: { id: '0001', make: 'Opel', model: 'Astra', colour: 'blue', seats: 5 } }
+        { id: '0001', first_name:'Thorsten', company:'Deutsche Telekom AG',  name: 'Schmidt', rating: 4, 
+        car: { id: '0001', make: 'Opel', model: 'Astra', colour: 'blue', seats: 5 }, 
+        default_start:{
+            coords:[0,1],
+            id:'1337',
+            name:'Haupstraße 36'
+        } }
     ];
 
 
 
     getProfile(id: string) {
-        return { id: '0001', name: 'Rüdiger', rating: 4, car: { id: '0001', make: 'Opel', model: 'Astra', colour: 'blue', seats: 5 } };
-
+        return { id: '0001', first_name:'Thorsten', company:'Deutsche Telekom AG',  name: 'Schmidt', rating: 4, 
+        car: { id: '0001', make: 'Opel', model: 'Astra', colour: 'blue', seats: 5 }, 
+        default_start:{
+            coords:[0,1],
+            id:'1337',
+            name:'Haupstraße 36'
+        } }
     }
 
     getProfileFromId(id: string): Observable<any>{
