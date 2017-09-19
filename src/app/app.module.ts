@@ -29,7 +29,6 @@ import { FillPipe } from '../pipes/pipes';
 import { SetLocationPage } from "../pages/set-location/set-location";
 import { RideTemplateService } from '../services/RideTemplateService/ride.template.service';
 import { RideService } from '../services/GeofireService/ride.service';
-import { RideTestService } from "../services/RideService/ride.service";
 
 @NgModule({
   declarations: [
@@ -66,7 +65,6 @@ import { RideTestService } from "../services/RideService/ride.service";
     ProfileService,
     RideTemplateService,
     RideService,
-    RideTestService,
     { provide: ErrorHandler, useClass: IonicErrorHandler }
   ]
 })

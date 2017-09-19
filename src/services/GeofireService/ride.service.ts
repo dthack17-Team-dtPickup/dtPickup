@@ -125,9 +125,6 @@ export class RideService{
         return true;
     }
 
-
-
-
     getAcceptedRides(profileId: string) {
         let res = this.RIDE;
         let me = this;
@@ -136,6 +133,10 @@ export class RideService{
             ride.driver = driver;
         });
         return res;
+    }
+
+    getCanceledRides(profileId: string) {
+        return [];
     }
 
 }

@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
 import { AddRideTemplatePage } from '../add-ride-template/add-ride-template';
 import { AuthService } from '../../services/AuthService/auth.service';
-import { RideService } from '../../services/RideService/ride.service';
+import { RideService } from '../../services/GeofireService/ride.service';
 
 @Component({
   selector: 'page-home',
