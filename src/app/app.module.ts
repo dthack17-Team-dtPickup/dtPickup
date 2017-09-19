@@ -25,7 +25,7 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 import { SignupUserModule } from "../setup-pages/signup-user/signup-user.module";
 import { ProfilePage } from '../pages/profile/profile';
 import { ProfileService } from '../services/ProfileService/profile.service';
-import { FillPipe } from '../services/pipes/pipes';
+import { FillPipe } from '../pipes/pipes';
 
 @NgModule({
   declarations: [

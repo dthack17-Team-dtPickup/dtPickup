@@ -1,22 +1,12 @@
-import { Component, Pipe, PipeTransform } from '@angular/core';
+import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
 import { ProfileService } from '../../services/ProfileService/profile.service';
 import { AuthService } from '../../services/AuthService/auth.service';
 //import { TemplateService } from '../../services/TemplateService/template.service';
 
-@Pipe({
-  name: 'fill'
-})
-export class FillPipe implements PipeTransform {
-  transform(value) {
-    return (new Array(value)).fill(1);
-  }
-}
-
 @Component({
   selector: 'page-profile',
-  templateUrl: 'profile.html',
-  pipes: [FillPipe]
+  templateUrl: 'profile.html'
 })
 
 export class ProfilePage {
