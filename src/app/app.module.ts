@@ -2,32 +2,54 @@ import { BrowserModule } from '@angular/platform-browser';
 import { ErrorHandler, NgModule } from '@angular/core';
 import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
 
-import { MyApp } from './app.component';
+//database modules
+import { AngularFireDatabaseModule } from 'angularfire2/database';
+import { AngularFireAuthModule } from 'angularfire2/auth';
+import { FirebaseModule } from "./app.firebase.config";
+
+//main app Component
+import { DtPickup } from './app.component';
+
+// Application Pages
+import { LoginUserPage } from "../setup-pages/login-user/login-user";
 import { HomePage } from '../pages/home/home';
 import { ListPage } from '../pages/list/list';
 
+//Ionic Native Modules
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
+import { AuthService } from "../setup-pages/services/auth.service";
+import { SignupUserModule } from "../setup-pages/signup-user/signup-user.module";
+
+
 
 @NgModule({
   declarations: [
-    MyApp,
+    DtPickup,
     HomePage,
-    ListPage
+    ListPage,
+    LoginUserPage,
+  
   ],
   imports: [
     BrowserModule,
-    IonicModule.forRoot(MyApp),
+    FirebaseModule,
+    SignupUserModule,
+    AngularFireAuthModule,
+    AngularFireDatabaseModule,
+    IonicModule.forRoot(DtPickup),
   ],
   bootstrap: [IonicApp],
   entryComponents: [
-    MyApp,
+    DtPickup,
     HomePage,
-    ListPage
+    ListPage,
+    LoginUserPage,
   ],
   providers: [
     StatusBar,
     SplashScreen,
+    AuthService,
     {provide: ErrorHandler, useClass: IonicErrorHandler}
   ]
 })
