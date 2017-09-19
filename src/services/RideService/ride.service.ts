@@ -24,7 +24,7 @@ export class RideService {
         { id: '0003', driverId: '0004', driver: {}, pickupTime: '22.09.2017, 09:30 Uhr' }
     ];
 
-    getRides(profileId: string) {
+    getAcceptedRides(profileId: string) {
         let res = this.RIDES;
         let me = this;
         res.forEach(function(ride) {
@@ -34,5 +34,9 @@ export class RideService {
         return res;
     }
 
+    getCanceledRides(profileId: string) {
+        return [];
+    }
+        
 }
 

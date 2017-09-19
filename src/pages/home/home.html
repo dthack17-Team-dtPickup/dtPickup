@@ -13,11 +13,11 @@
 </ion-header>
 
 <ion-content padding>
-  <div text-center><button>Accepted</button><button>Canceled</button></div>
+  <div text-center><button class="ToggleButton" (click)="showAcceptedRides()">Accepted</button><button class="ToggleButton" (click)="showCanceledRides()">Canceled</button></div>
   <ion-list>
     <ion-item *ngFor="let ride of rides">
       <ion-avatar item-start>
-        <img src="assets/img/person-picture@1x.png">
+        <img src="assets/img/person-picture@1x.png" class="DriverPhoto">
       </ion-avatar>
       <h2>{{ride.driver.first_name}} {{ride.driver.name}}</h2>
       <div><ion-icon *ngFor="let i of ride.driver.rating | fill" name="star" color="star"></ion-icon></div>
