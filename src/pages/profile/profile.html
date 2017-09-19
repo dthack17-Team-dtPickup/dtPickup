@@ -3,24 +3,43 @@
     <button ion-button menuToggle>
       <ion-icon name="menu"></ion-icon>
     </button>
-    <ion-title>Profile</ion-title>
+    <ion-title>Your Profile</ion-title>
   </ion-navbar>
 </ion-header>
 
 <ion-content padding>
-  <center>
-  <img src="img/person-picture.png"
-    srcset="img/person-picture@2x.png 2x,
-            img/person-picture@3x.png 3x,
-            img/person-picture@2x.png 4x"
-    class="Oval">
-    <div>{{fullname}}</div>
-    <div>{{company}}</div>
-    <div>{{rating}}</div>
-  </center>
+  <ion-grid>
+    <ion-row>
+      <ion-col align-items-center>
+        <img src="assets/img/person-picture@1x.png" srcset="assets/img/person-picture@2x.png 2x,
+        assets/img/person-picture@3x.png 3x,
+        assets/img/person-picture@4x.png 4x" class="Oval">
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col align-items-center>
+        <div>{{fullname}}</div>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col align-items-center>
+        <div>{{company}}</div>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col align-items-center>
+        <div>{{rating}}</div>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
   <ion-list>
-    <button>
-      
+    <button ion-item>
+      <span class="CheckShape"></span>
+      <div>Fahrer</div>
+      <span class="StartShape"></span>
+      <div>Sandstr. 13, Wachtberg</div>
+      <span class="FinishShape"></span>
+      <div>Landgrabenweg 151, Bonn</div>
     </button>
   </ion-list>
 </ion-content>
