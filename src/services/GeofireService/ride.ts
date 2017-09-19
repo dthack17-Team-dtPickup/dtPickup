@@ -9,12 +9,8 @@ export class Ride {
     current_location:Location;
     creator:string;
     free_seats:number;
-    passengers:string[];
+    members:string[];
     car:Car;
-    driverId:string;
-    driver:object;
-    pickupTime: string;
-
     
 
 
