@@ -1,11 +1,11 @@
-import { Component, NgZone, ViewChild, ElementRef, Renderer2, OnInit } from '@angular/core';
-import { NavController, NavParams } from 'ionic-angular';
+import { Component, NgZone, ViewChild, ElementRef, OnInit } from '@angular/core';
+import { NavParams } from 'ionic-angular';
 import { ViewController } from 'ionic-angular';
 import { BehaviorSubject } from "rxjs/";
 
 @Component({
-  selector: 'page-find-shop',
-  templateUrl: 'find-location.subpage.html',
+  selector: 'set-location',
+  templateUrl: 'set-location.html',
 })
 
 export class FindLocationPage  implements OnInit{
@@ -18,7 +18,7 @@ export class FindLocationPage  implements OnInit{
     only_cities: boolean;
     @ViewChild('ionSearchbar') searchbar: ElementRef;
     
-    constructor(public viewCtrl: ViewController, private zone: NgZone, private renderer: Renderer2, private elementRef: ElementRef, private params: NavParams) {
+    constructor(public viewCtrl: ViewController, private zone: NgZone, private params: NavParams) {
         this.autocompleteItems = [];
         this.autocomplete = {
             query: ''
