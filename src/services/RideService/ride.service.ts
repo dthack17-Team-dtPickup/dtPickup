@@ -6,7 +6,7 @@ import 'rxjs/add/operator/take';
 import { ProfileService } from '../../services/ProfileService/profile.service';
 
 @Injectable()
-export class RideService {
+export class RideTestService {
 
     dbRef: any;
     hits = new BehaviorSubject([]);
