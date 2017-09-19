@@ -28,17 +28,17 @@
     </ion-row>
     <ion-row>
       <ion-col align-items-center>
-        <div>{{user_profile.rating}}</div>
+        <ion-icon *ngFor="let i of user_profile.rating | fill" name="star"></ion-icon>
       </ion-col>
     </ion-row>
   </ion-grid>
   <ion-list *ngFor="let template of templates">
     <button ion-item>
-      <span class="CheckShape"></span>
+      <img src="assets/img/voluntarily_graphical.svg" class="CheckShape"/>
       <div>{{template.type}}</div>
-      <span class="StartShape"></span>
+      <img src="assets/img/arrow-target_solid.svg"  class="StartShape"/>
       <div>{{template.startpoint}}</div>
-      <span class="FinishShape"></span>
+      <img src="assets/img/arrow-target_solid.svg"  class="FinishShape"/>
       <div>{{template.endpoint}}</div>
     </button>
   </ion-list>
