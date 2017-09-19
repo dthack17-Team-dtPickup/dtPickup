@@ -10,21 +10,13 @@ import { RideService } from '../../services/RideService/ride.service';
 })
 export class HomePage {
 
-  authService: AuthService;
-  rideService: RideService;
-  rides: any;
+  acceptedRides: any;
+  canceledRides: any;
+  rides: string = 'accepted';
 
   constructor(public navCtrl: NavController, authService: AuthService, rideService: RideService) {
-    this.authService = authService;
-    this.rideService = rideService;
-  }
-
-  showAcceptedRides() {
-    this.rides = this.rideService.getAcceptedRides(this.authService.currentUserId);
-  }
-
-  showCanceledRides() {
-    this.rides = this.rideService.getCanceledRides(this.authService.currentUserId);
+    this.acceptedRides = rideService.getAcceptedRides(authService.currentUserId);
+    this.canceledRides = rideService.getCanceledRides(authService.currentUserId);
   }
 
   openAddProfile(){
