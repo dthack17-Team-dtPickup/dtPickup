@@ -25,10 +25,7 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 import { SignupUserModule } from "../setup-pages/signup-user/signup-user.module";
 import { ProfilePage } from '../pages/profile/profile';
 import { ProfileService } from '../services/ProfileService/profile.service';
-
-
-
-
+import { FillPipe } from '../services/pipes/pipes';
 
 @NgModule({
   declarations: [
@@ -36,8 +33,8 @@ import { ProfileService } from '../services/ProfileService/profile.service';
     HomePage,
     ListPage,
     LoginUserPage,
-    ProfilePage
-  
+    ProfilePage,
+    FillPipe
   ],
   imports: [
     BrowserModule,
@@ -61,7 +58,7 @@ import { ProfileService } from '../services/ProfileService/profile.service';
     AuthService,
     GeoService,
     ProfileService,
-    {provide: ErrorHandler, useClass: IonicErrorHandler}
+    { provide: ErrorHandler, useClass: IonicErrorHandler }
   ]
 })
-export class AppModule {}
+export class AppModule { }
