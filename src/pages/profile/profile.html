@@ -13,16 +13,13 @@
   assets/img/person-picture@4x.png 4x" class="Oval"></div>
   <div class="ProfileFullName" text-center>{{user_profile.first_name}} {{user_profile.name}}</div>
   <div text-center>{{user_profile?.company}}</div>
-  <div text-center><ion-icon *ngFor="let i of user_profile.rating | fill" name="star" color="star" width="22px" height="22px"></ion-icon></div>
+  <div text-center><ion-icon *ngFor="let i of user_profile.rating | fill" name="star" color="star"></ion-icon></div>
   <ion-list *ngFor="let template of templates">
     <button ion-item>
-      <img src="assets/img/voluntarily_graphical.svg" class="CheckShape"/>
-      <div>{{template.type}}</div>
-      <img src="assets/img/arrow-target_solid.svg"  class="StartShape"/>
-      <div>{{template.startpoint}}</div>
-      <img src="assets/img/arrow-target_solid.svg"  class="FinishShape"/>
-      <div>{{template.endpoint}}</div>
+      <div *ngIf="template.isDriver == true"><img src="assets/svg/voluntarily_graphical.svg"/> <span style="font-size: 2em">Driver</span></div>
+      <div *ngIf="template.isDriver == false"><img src="assets/svg/error_graphical.svg"/> <span style="font-size: 2em">Passenger</span></div>
+      <div><img src="assets/svg/arrow-start_solid.svg"/> {{template.startpoint}}</div>
+      <div><img src="assets/svg/arrow-target_solid.svg"/> {{template.endpoint}}</div>
     </button>
   </ion-list>
 </ion-content>
->>>>>>> 1cdad23b556b57c9b73997cd6e72e01c0fac7876
