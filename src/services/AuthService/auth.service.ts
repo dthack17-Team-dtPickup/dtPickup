@@ -126,13 +126,10 @@ export class AuthService {
 
 
           this.db.object(`/users/${this.auth.auth.currentUser.uid}`).set({
-            // we only can get the displayName, photoUrl, and uid from the user table
-            // we create a new table users where we will store all our users data (subscribed stores, 
-            // contacts, gamification logic etc.)
+
             uid: this.auth.auth.currentUser.uid,
             displayName: this.auth.auth.currentUser.displayName,
             photoUrl: 'https://api.adorable.io/avatars/' + this.auth.auth.currentUser.displayName,
-            organization: false,
             participation: {},
             createdAt: firebase.database.ServerValue.TIMESTAMP,
           }).then(() => {
@@ -144,24 +141,12 @@ export class AuthService {
             .then()
             .catch((err) => { reject(err) })
 
+
           //set initial follower value
           this.db.object(`/followers/${this.auth.auth.currentUser.uid}`).set({0: false})
             .then()
             .catch((err) => { reject(err) })
 
-          //set initial follower value
-          this.db.object(`/timeline/${this.auth.auth.currentUser.uid}`).set({0: false})
-            .then()
-            .catch((err) => { reject(err) })
-
-          //set initial filter value
-          this.db.object(`/filters/${this.auth.auth.currentUser.uid}`).set({
-            filters: {0: true, 1:true, 2:true, 3:true, 4:true,5:true, 6:true },
-            radius: 5
-          }).then(() => {
-            resolve({ success: true });
-          }).catch((err) => { reject(err) })
-  
         }).catch((err) => { reject(err) })
       }).catch((err) => { reject(err) })
     })
