@@ -3,7 +3,7 @@
     <button ion-button menuToggle>
       <ion-icon name="menu"></ion-icon>
     </button>
-    <ion-title>DT PICKUP</ion-title>
+    <ion-title>Your Rides</ion-title>
     <ion-buttons end>
       <button (click)="openAddProfile()" ion-button icon-only color="royal">
           <ion-icon name="add"></ion-icon>
@@ -13,9 +13,22 @@
 </ion-header>
 
 <ion-content padding>
-  <div text-center><button class="ToggleButton" (click)="showAcceptedRides()">Accepted</button><button class="ToggleButton" (click)="showCanceledRides()">Canceled</button></div>
-  <ion-list>
-    <ion-item *ngFor="let ride of rides">
+  <ion-segment [(ngModel)]="rides" color="secondary">
+    <ion-segment-button value="accepted"><ion-badge item-start *ngIf="acceptedRides.length > 0">{{acceptedRides.length}}</ion-badge> Accepted</ion-segment-button>
+    <ion-segment-button value="canceled"><ion-badge item-start *ngIf="canceledRides.length > 0">{{canceledRides.length}}</ion-badge> Canceled</ion-segment-button>
+  </ion-segment>
+  <ion-list *ngIf="rides == 'accepted'">
+    <ion-item *ngFor="let ride of acceptedRides">
+      <ion-avatar item-start>
+        <img src="assets/img/person-picture@1x.png" class="DriverPhoto">
+      </ion-avatar>
+      <h2>{{ride.driver.first_name}} {{ride.driver.name}}</h2>
+      <div><ion-icon *ngFor="let i of ride.driver.rating | fill" name="star" color="star"></ion-icon></div>
+      <div>{{ride.pickupTime}}</div>
+    </ion-item>
+  </ion-list>
+  <ion-list *ngIf="rides == 'canceled'">
+    <ion-item *ngFor="let ride of canceledRides">
       <ion-avatar item-start>
         <img src="assets/img/person-picture@1x.png" class="DriverPhoto">
       </ion-avatar>
