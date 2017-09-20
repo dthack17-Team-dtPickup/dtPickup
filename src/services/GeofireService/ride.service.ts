@@ -9,169 +9,247 @@ import { ProfileService } from '../ProfileService/profile.service';
 import { AuthService } from "../AuthService/auth.service";
 
 @Injectable()
-export class RideService{
+export class RideService {
 
-    
+
     profileService: ProfileService;
     dbRef: any;
     hits = new BehaviorSubject([])
     items: FirebaseListObservable<any[]>;
 
-    constructor(private db: AngularFireDatabase,private auth: AuthService, private geoService: GeoService, profileService: ProfileService) {
-        
+    constructor(private db: AngularFireDatabase, private auth: AuthService, private geoService: GeoService, profileService: ProfileService) {
+
         /// Reference database location for GeoFire
         this.dbRef = this.db.list('/rides');
         this.profileService = profileService;
-
+        //this.getAvailableRides()
     }
 
 
     RIDE: Ride[] = [
-        {key:'0001',
-            locations:[{coords:[11,0], id:'0001',name:'Bushaltestalle B9'},
-            {coords:[11,0], id:'0001',name:'Bushaltestalle B9'}],
-            destination:{coords:[11,0], id:'0001',name:'Bushaltestalle B9'},
-            start_location:{coords:[11,0],id:'0001',name:'Bushaltestalle B9'},
-            current_location:{coords:[11,0,3],id:'0001',name:'current'},
-            car: { id: '0001', make: 'Opel', model: 'Astra', colour: 'blue', seats: 5 }, 
-            creator:'0001',
-            free_seats:1,
-            passengers:['0002','0003'],
+/*         {
+            key: '0001',
+            locations: [{ coords: [11, 0], id: '0001', name: 'Bushaltestalle B9' },
+            { coords: [11, 0], id: '0001', name: 'Bushaltestalle B9' }],
+            destination: { coords: [11, 0], id: '0001', name: 'Bushaltestalle B9' },
+            start_location: { coords: [11, 0], id: '0001', name: 'Bushaltestalle B9' },
+            current_location: { coords: [11, 0, 3], id: '0001', name: 'current' },
+            car: { id: '0001', make: 'Opel', model: 'Astra', colour: 'blue', seats: 5 },
+            creator: '0001',
+            free_seats: 1,
+            passengers: ['0002', '0003'],
             pickupTime: '20.09.2017, 09:00 Uhr',
-            driverId:'0001',
-            driver:{}
+            driverId: '0001',
+            driver: {}
+
+        }, 
+        {
+            key: '0002',
+            locations: [{ coords: [11, 0], id: '0001', name: 'Bushaltestalle B9' },
+            { coords: [11, 0], id: '0001', name: 'Bushaltestalle B9' }],
+            destination: { coords: [11, 0], id: '0001', name: 'Bushaltestalle B9' },
+            start_location: { coords: [11, 0], id: '0001', name: 'Bushaltestalle B9' },
+            current_location: { coords: [11, 0, 3], id: '0001', name: 'current' },
+            car: { id: '0001', make: 'Opel', model: 'Astra', colour: 'blue', seats: 5 },
+            creator: '0001',
+            free_seats: 1,
+            passengers: ['0002', '0003'],
+            pickupTime: '20.09.2017, 09:00 Uhr',
+            driverId: '0001',
+            driver: {}
 
         },
-        {key:'0002',
-        locations:[{coords:[11,0], id:'0001',name:'Bushaltestalle B9'},
-        {coords:[11,0], id:'0001',name:'Bushaltestalle B9'}],
-        destination:{coords:[11,0], id:'0001',name:'Bushaltestalle B9'},
-        start_location:{coords:[11,0],id:'0001',name:'Bushaltestalle B9'},
-        current_location:{coords:[11,0,3],id:'0001',name:'current'},
-        car: { id: '0001', make: 'Opel', model: 'Astra', colour: 'blue', seats: 5 }, 
-        creator:'0001',
-        free_seats:1,
-        passengers:['0002','0003'],
-        pickupTime: '20.09.2017, 09:00 Uhr',
-        driverId:'0001',
-        driver:{}
+        {
+            key: '0003',
+            locations: [{ coords: [11, 0], id: '0001', name: 'Bushaltestalle B9' },
+            { coords: [11, 0], id: '0001', name: 'Bushaltestalle B9' }],
+            destination: { coords: [11, 0], id: '0001', name: 'Bushaltestalle B9' },
+            start_location: { coords: [11, 0], id: '0001', name: 'Bushaltestalle B9' },
+            current_location: { coords: [11, 0, 3], id: '0001', name: 'current' },
+            car: { id: '0001', make: 'Opel', model: 'Astra', colour: 'blue', seats: 5 },
+            creator: '0001',
+            free_seats: 1,
+            passengers: ['0002', '0003'],
+            pickupTime: '20.09.2017, 09:00 Uhr',
+            driverId: '0001',
+            driver: {}
 
-    },
-    {key:'0003',
-    locations:[{coords:[11,0], id:'0001',name:'Bushaltestalle B9'},
-    {coords:[11,0], id:'0001',name:'Bushaltestalle B9'}],
-    destination:{coords:[11,0], id:'0001',name:'Bushaltestalle B9'},
-    start_location:{coords:[11,0],id:'0001',name:'Bushaltestalle B9'},
-    current_location:{coords:[11,0,3],id:'0001',name:'current'},
-    car: { id: '0001', make: 'Opel', model: 'Astra', colour: 'blue', seats: 5 }, 
-    creator:'0001',
-    free_seats:1,
-    passengers:['0002','0003'],
-    pickupTime: '20.09.2017, 09:00 Uhr',
-    driverId:'0001',
-    driver:{}
-
-}
+        }*/
     ];
 
 
     getRide(id: string) {
-        return  {key:'0001',
-        locations:[{coords:[11,0], id:'0001',name:'Bushaltestalle B9'},
-        {coords:[11,0], id:'0001',name:'Bushaltestalle B9'}],
-        destination:{coords:[11,0], id:'0001',name:'Bushaltestalle B9'},
-        start_location:{coords:[11,0],id:'0001',name:'Bushaltestalle B9'},
-        current_location:{coords:[11,0,3],id:'0001',name:'current'},
-        car: { id: '0001', make: 'Opel', model: 'Astra', colour: 'blue', seats: 5 }, 
-        creator:'0001',
-        free_seats:1,
-        passengers:['0002','0003'],
-        pickupTime: '20.09.2017, 09:00 Uhr',
-        driverId:'0001',
-        driver:{}
+        return {
+            key: '0001',
+            locations: [{ coords: [11, 0], id: '0001', name: 'Bushaltestalle B9' },
+            { coords: [11, 0], id: '0001', name: 'Bushaltestalle B9' }],
+            destination: { coords: [11, 0], id: '0001', name: 'Bushaltestalle B9' },
+            start_location: { coords: [11, 0], id: '0001', name: 'Bushaltestalle B9' },
+            current_location: { coords: [11, 0, 3], id: '0001', name: 'current' },
+            car: { id: '0001', make: 'Opel', model: 'Astra', colour: 'blue', seats: 5 },
+            creator: '0001',
+            free_seats: 1,
+            passengers: ['0002', '0003'],
+            pickupTime: '20.09.2017, 09:00 Uhr',
+            driverId: '0001',
+            driver: {}
+
+        }
 
     }
 
-    }
-
-    getRideFromId(id: string): Observable<any>{
-        console.log("getRideFromId called with id: "+ id);
+    getRideFromId(id: string): Observable<any> {
+        console.log("getRideFromId called with id: " + id);
         return this.db.object(`rides/${id}`).take(1)
     }
 
-    addRidf(ride: Ride) {
-        const itemObservable = this.dbRef;
-        this.dbRef.database.ref(ride.key).set(ride);
-        ride.locations.forEach(location => {
-            this.geoService.setLocation(location.id,location.coords);
-        });
-        
-        return true;
+
+    addRide(form_params: any) {
+
+        const location = this.createLocationArr(form_params)
+        const aggregated_form = this.aggregateForm(form_params)
+        //const aggregated_form = this.aggregateForm(form_params, location)
+        this.db.database.ref(`/rides`).push({[this.auth.currentUserId] : aggregated_form})
+            .then((snap) => {
+                const key = snap.key
+                this.geoService.setLocation(key, location)
+                this.setUserRide(key)
+            })
+
     }
 
-    addRide(form_params: any){
-        
-        const location = this.createLocationArr(form_params)
-        //const aggregated_form = this.aggregateForm(form_params, location)
-        this.db.database.ref('/rides').push(form_params)
-            .then((snap) => {
-                const key = snap.key 
-                this.geoService.setLocation(key, location)
-            })
-          
+    setUserRide(rideId){
+        this.db.list(`users/${this.auth.currentUserId}/ride_templates`).push({ [rideId] : true})
+    }
+
+    updateActiveRide(rideId){
+        this.db.list(`users/${this.auth.currentUserId}/ride_templates`).push({[rideId] : true})
     }
 
     //helper functions
-    createLocationArr(form_params){
+    createLocationArr(form_params) {
         const lat = form_params.start_location.geometry.location.lat
         const lng = form_params.start_location.geometry.location.lng
-        const location = [lat,lng]
+        const location = [lat, lng]
 
         return location
     }
 
-    aggregateForm(form_params, location){
+    aggregateForm(form_params) {
         return {
             locations: {
                 start_location: form_params.start_location,
                 destination_location: form_params.destination_location
             },
-            creator:{
+            creator_id: this.auth.currentUserId, 
+            creator: {
                 displayName: this.auth.currentUserDisplayName,
-                creator_id: this.auth.currentUserId 
+                _id: this.auth.currentUserId
             },
-            free_seats: 3,
-
-
+            free_seats: 4,
+            car:{
+                make:'VW',
+                model:'eGolf',
+                colour:'white',
+                seats: 5
+            },
+            pickupTime: form_params.time,
+            date: form_params.date
         }
     }
 
 
-    cancelRide(id: string){
-        console.log("cancelRide called with id: "+ id);
+    cancelRide(id: string) {
+        console.log("cancelRide called with id: " + id);
         let tempRide = this.db.database.ref(id).once;
-        
-           
-        
-        const promise = this.db.database.ref('/rides/'+id).remove();
+
+
+
+        const promise = this.db.database.ref('/rides/' + id).remove();
         promise
-        .then(_ => console.log('success'))
-        .catch(err => console.log(err, 'You dont have access!'));
+            .then(_ => console.log('success'))
+            .catch(err => console.log(err, 'You dont have access!'));
         return true;
     }
 
     getAcceptedRides(profileId: string) {
-        let res = this.RIDE;
-        let me = this;
-        res.forEach(function(ride) {
-            var driver = me.profileService.getProfile(ride.driverId);
-            ride.driver = driver;
-        });
-        return res;
+        return [
+               {
+                        key: '0001',
+                        locations: [{ coords: [11, 0], id: '0001', name: 'Bushaltestalle B9' },
+                        { coords: [11, 0], id: '0001', name: 'Bushaltestalle B9' }],
+                        destination: { coords: [11, 0], id: '0001', name: 'Bushaltestalle B9' },
+                        start_location: { coords: [11, 0], id: '0001', name: 'Bushaltestalle B9' },
+                        current_location: { coords: [11, 0, 3], id: '0001', name: 'current' },
+                        car: { id: '0001', make: 'Opel', model: 'Astra', colour: 'blue', seats: 5 },
+                        creator: '0001',
+                        free_seats: 1,
+                        passengers: ['0002', '0003'],
+                        pickupTime: '20.09.2017, 09:00 Uhr',
+                        driverId: '0001',
+                        driver: {}
+            
+                    }, 
+                    {
+                        key: '0002',
+                        locations: [{ coords: [11, 0], id: '0001', name: 'Bushaltestalle B9' },
+                        { coords: [11, 0], id: '0001', name: 'Bushaltestalle B9' }],
+                        destination: { coords: [11, 0], id: '0001', name: 'Bushaltestalle B9' },
+                        start_location: { coords: [11, 0], id: '0001', name: 'Bushaltestalle B9' },
+                        current_location: { coords: [11, 0, 3], id: '0001', name: 'current' },
+                        car: { id: '0001', make: 'Opel', model: 'Astra', colour: 'blue', seats: 5 },
+                        creator: '0001',
+                        free_seats: 1,
+                        passengers: ['0002', '0003'],
+                        pickupTime: '20.09.2017, 09:00 Uhr',
+                        driverId: '0001',
+                        driver: {}
+            
+                    },
+                    {
+                        key: '0003',
+                        locations: [{ coords: [11, 0], id: '0001', name: 'Bushaltestalle B9' },
+                        { coords: [11, 0], id: '0001', name: 'Bushaltestalle B9' }],
+                        destination: { coords: [11, 0], id: '0001', name: 'Bushaltestalle B9' },
+                        start_location: { coords: [11, 0], id: '0001', name: 'Bushaltestalle B9' },
+                        current_location: { coords: [11, 0, 3], id: '0001', name: 'current' },
+                        car: { id: '0001', make: 'Opel', model: 'Astra', colour: 'blue', seats: 5 },
+                        creator: '0001',
+                        free_seats: 1,
+                        passengers: ['0002', '0003'],
+                        pickupTime: '20.09.2017, 09:00 Uhr',
+                        driverId: '0001',
+                        driver: {}
+            
+                    }
+                ];
+    }
+
+    getAvailableRides(){
+        this.getStartLocation(this.auth.currentUserId)
+            .switchMap(ride => {
+                if(ride != [])
+                return this.geoService.getLocations(5, this.rideToStartLocation(ride))
+            } ).subscribe(x => console.log(x))
+        
+    }
+
+    //he;per function 
+    rideToStartLocation(ride){
+        console.log(ride)
+        const lng = ride.locations.start_location.geometry.location.lng
+        const lat = ride.locations.start_location.geometry.location.lat
+        return [lat, lng]
+    }
+    joinRide(id: string){
+
     }
 
     getCanceledRides(profileId: string) {
         return [];
     }
 
+    getStartLocation(of_user_id: string){
+        return this.db.list(`/rides/${of_user_id}`).take(1);
+    }
 }

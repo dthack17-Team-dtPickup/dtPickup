@@ -9,10 +9,8 @@ export interface Ride {
     free_seats:number;
     passengers:string[];
     car:Car;
-    driverId:string;
-    driver:object;
     pickupTime: string;
-
+    date: any
     
 
 

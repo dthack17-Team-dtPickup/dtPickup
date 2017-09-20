@@ -14,17 +14,17 @@
 
 <ion-content padding>
   <ion-segment [(ngModel)]="rides" color="secondary">
-    <ion-segment-button value="accepted"><ion-badge item-start *ngIf="acceptedRides.length > 0">{{acceptedRides.length}}</ion-badge> Accepted</ion-segment-button>
-    <ion-segment-button value="canceled"><ion-badge item-start *ngIf="canceledRides.length > 0">{{canceledRides.length}}</ion-badge> Canceled</ion-segment-button>
+    <ion-segment-button value="accepted"><ion-badge item-start *ngIf="acceptedRides.length > 0">{{acceptedRides?.length}}</ion-badge> Accepted</ion-segment-button>
+    <ion-segment-button value="canceled"><ion-badge item-start *ngIf="canceledRides.length > 0">{{canceledRides?.length}}</ion-badge> Canceled</ion-segment-button>
   </ion-segment>
   <ion-list *ngIf="rides == 'accepted'">
     <button ion-item *ngFor="let ride of acceptedRides" (click)="showRideProfile(ride.rideId)">
       <ion-avatar item-start>
         <img src="{{ride.driver.photourl}}" class="DriverPhoto">
       </ion-avatar>
-      <h2>{{ride.driver.first_name}} {{ride.driver.name}}</h2>
+      <h2>{{ride?.driver?.first_name}} {{ride?.driver?.name}}</h2>
       <div><ion-icon *ngFor="let i of ride.driver.rating | fill" name="star" color="star"></ion-icon></div>
-      <div>{{ride.pickupTime}}</div>
+      <div>{{ride?.pickupTime}}</div>
     </button>
   </ion-list>
   <ion-list *ngIf="rides == 'canceled'">
@@ -32,9 +32,9 @@
       <ion-avatar item-start>
         <img src="{{ride.driver.photourl}}" class="DriverPhoto">
       </ion-avatar>
-      <h2>{{ride.driver.first_name}} {{ride.driver.name}}</h2>
+      <h2>{{ride?.driver?.first_name}} {{ride?.driver?.name}}</h2>
       <div><ion-icon *ngFor="let i of ride.driver.rating | fill" name="star" color="star"></ion-icon></div>
-      <div>{{ride.pickupTime}}</div>
+      <div>{{ride?.pickupTime}}</div>
     </button>
   </ion-list>
 </ion-content>

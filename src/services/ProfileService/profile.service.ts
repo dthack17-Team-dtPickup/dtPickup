@@ -17,18 +17,6 @@ export class ProfileService {
 
     }
 
-    PROFILES: Profile[] = [
-        { id: '0001', first_name:'Thorsten', company:'Deutsche Telekom AG',  name: 'Schmidt', rating: 4, 
-        car: { id: '0001', make: 'Opel', model: 'Astra', colour: 'blue', seats: 5 }, 
-        default_start:{
-            coords:[0,1],
-            id:'1337',
-            name:'Haupstraße 36'
-        },
-        routes:[]
-     }
-    ];
-
 
 
     getProfile(id: string) {
@@ -55,9 +43,6 @@ export class ProfileService {
          })
     }
 
-    getProfiles() {
-        return this.PROFILES;
-    }
 
 }
 

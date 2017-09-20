@@ -48,26 +48,20 @@ export class DtPickup implements OnDestroy{
          badge: true,
          sound: 'false'
      },
-     windows: {}
+     windows: {},
+     browser: {
+      pushServiceURL: 'http://push.api.phonegap.com/v1/push'
+    },
   };
  
   const pushObject: PushObject = this.push.init(options);
+  
+  pushObject.on('notification').subscribe((notification: any) => console.log('Received a notification', notification));
+  
+  pushObject.on('registration').subscribe((registration: any) => console.log('Device registered', registration));
+  
+  pushObject.on('error').subscribe(error => console.error('Error with Push plugin', error));
  
-  pushObject.on('notification').subscribe((notification: any) => {
-    if (notification.additionalData.foreground) {
-      let youralert = this.alertCtrl.create({
-        title: 'New Push notification',
-        message: notification.message
-      });
-      youralert.present();
-    }
-  });
- 
-  pushObject.on('registration').subscribe((registration: any) => {
-     //do whatever you want with the registration ID
-  });
- 
-  pushObject.on('error').subscribe(error => alert('Error with Push plugin' + error));
   }
 
 
