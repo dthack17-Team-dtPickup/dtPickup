@@ -1,5 +1,5 @@
 import {Car} from './car';
-import {Locations} from '../GeofireService/location';
+import {Location} from '../GeofireService/location.1';
 import {Route} from '../GeofireService/route';
 export class Profile{
 
@@ -9,7 +9,7 @@ export class Profile{
     first_name:string;
     rating:number;
     car:Car;
-    default_start:Locations;
+    default_start:Location;
     routes:Route[];
 
 }
