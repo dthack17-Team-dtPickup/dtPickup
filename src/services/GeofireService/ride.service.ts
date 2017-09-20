@@ -181,7 +181,7 @@ export class RideService {
     getAcceptedRides(profileId: string) {
                 let res = this.RIDE;
                 let me = this;
-               this.ride.forEach(function(ride) {
+                res.forEach(function(ride) {
                     var driver = me.profileService.getProfile(ride.driverId);
                     ride.driver = driver;
                });
