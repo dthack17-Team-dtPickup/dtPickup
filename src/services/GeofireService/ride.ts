@@ -1,13 +1,11 @@
-import {Location} from './location';
+import {Locations} from './location';
 import {Car} from '../ProfileService/car';
 
-export class Ride {
+export interface Ride {
     key:string;
-    locations:Location[];
-    destination:Location;
-    start_location:Location;
-    current_location:Location;
-    creator:string;
+    locations:Locations;
+    current_location?:Location;
+    creator:Object;
     free_seats:number;
     passengers:string[];
     car:Car;

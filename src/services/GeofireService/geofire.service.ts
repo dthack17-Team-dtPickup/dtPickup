@@ -18,7 +18,7 @@ export class GeoService {
 
    /// Adds GeoFire data to database
    /// key : RIDE ID 
-   setLocation(key:string, coords: Array<number>) {
+   setLocation(key:string, coords: Array<any>) {
      this.geoFire.set(key, coords)
          .then(res => console.log('location succesfully updated'))
          .catch(err => console.log(err, 'error while updating'))

@@ -1,5 +1,4 @@
 export class Location{
-    coords:Array<number>;
-    name:string;
-    id:string;
+    start_location: Object;
+    destination_location:Object
 }

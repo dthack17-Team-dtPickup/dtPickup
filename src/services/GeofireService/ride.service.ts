@@ -6,6 +6,7 @@ import { Observable } from 'rxjs/Observable';
 import { GeoService } from './geofire.service'
 import 'rxjs/add/operator/take';
 import { ProfileService } from '../ProfileService/profile.service';
+import { AuthService } from "../AuthService/auth.service";
 
 @Injectable()
 export class RideService{
@@ -16,7 +17,7 @@ export class RideService{
     hits = new BehaviorSubject([])
     items: FirebaseListObservable<any[]>;
 
-    constructor(private db: AngularFireDatabase, private geoService: GeoService, profileService: ProfileService) {
+    constructor(private db: AngularFireDatabase,private auth: AuthService, private geoService: GeoService, profileService: ProfileService) {
         
         /// Reference database location for GeoFire
         this.dbRef = this.db.list('/rides');
@@ -110,17 +111,39 @@ export class RideService{
 
     addRide(form_params: any){
         
-        console.log(form_params);
-
-        this.db.database.ref('/rides').push(
-        form_params
-
-    ).then((snap) => {
-        console.log(snap)
-        const key = snap.key 
-        //this.geoService.setLocation()
-     })
+        const location = this.createLocationArr(form_params)
+        //const aggregated_form = this.aggregateForm(form_params, location)
+        this.db.database.ref('/rides').push(form_params)
+            .then((snap) => {
+                const key = snap.key 
+                this.geoService.setLocation(key, location)
+            })
           
+    }
+
+    //helper functions
+    createLocationArr(form_params){
+        const lat = form_params.start_location.geometry.location.lat
+        const lng = form_params.start_location.geometry.location.lng
+        const location = [lat,lng]
+
+        return location
+    }
+
+    aggregateForm(form_params, location){
+        return {
+            locations: {
+                start_location: form_params.start_location,
+                destination_location: form_params.destination_location
+            },
+            creator:{
+                displayName: this.auth.currentUserDisplayName,
+                creator_id: this.auth.currentUserId 
+            },
+            free_seats: 3,
+
+
+        }
     }
 
 
