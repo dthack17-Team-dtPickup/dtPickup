@@ -23,7 +23,7 @@ export class DtPickup implements OnDestroy{
   private user$: any;
 
   constructor(platform: Platform, statusBar: StatusBar, 
-              splashScreen: SplashScreen, private auth: AngularFireAuth, public menu: MenuController, public appCtrl: App) {
+              splashScreen: SplashScreen, private auth: AngularFireAuth, public menu: MenuController, public appCtrl: App, public push: Push, public alertCtrl: AlertController) {
     
     platform.ready().then(() => {
       // Okay, so the platform is ready and our plugins are available.
