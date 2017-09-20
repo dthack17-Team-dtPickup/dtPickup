@@ -48,10 +48,11 @@ export class ProfileService {
     }
 
     addProfile(profile: Profile) {
-        this.dbRef.database.ref(profile.id).set(profile).
-        then(res => console.log('profile succesfully updated'))
-        .catch(err => console.log(err, 'error while updating'));
-        return true;
+        this.db.database.ref('/profile').push(profile).then((snap) => {
+            console.log(snap)
+            const key = snap.key 
+            
+         })
     }
 
     getProfiles() {

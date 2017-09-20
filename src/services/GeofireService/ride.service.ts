@@ -20,7 +20,7 @@ export class RideService{
         
         /// Reference database location for GeoFire
         this.dbRef = this.db.list('/rides');
-       this.profileService = profileService;
+        this.profileService = profileService;
 
     }
 
@@ -94,12 +94,13 @@ export class RideService{
     }
 
     getRideFromId(id: string): Observable<any>{
+        console.log("getRideFromId called with id: "+ id);
         return this.db.object(`rides/${id}`).take(1)
     }
 
     addRidf(ride: Ride) {
         const itemObservable = this.dbRef;
-        this.dbRef.database.ref(ride.key).set(ride).then;
+        this.dbRef.database.ref(ride.key).set(ride);
         ride.locations.forEach(location => {
             this.geoService.setLocation(location.id,location.coords);
         });
@@ -107,18 +108,29 @@ export class RideService{
         return true;
     }
 
-    addRide(form_params){
-        console.log(form_params)
+    addRide(form_params: any){
+        
+        console.log(form_params);
+
+        this.db.database.ref('/rides').push(
+        form_params
+
+    ).then((snap) => {
+        console.log(snap)
+        const key = snap.key 
+        //this.geoService.setLocation()
+     })
+          
     }
 
 
     cancelRide(id: string){
-       
-        let tempRide = this.dbRef.database.ref(id).once();
+        console.log("cancelRide called with id: "+ id);
+        let tempRide = this.db.database.ref(id).once;
         
            
         
-        const promise = this.dbRef.database.ref(id).remove();
+        const promise = this.db.database.ref('/rides/'+id).remove();
         promise
         .then(_ => console.log('success'))
         .catch(err => console.log(err, 'You dont have access!'));
