@@ -41,7 +41,7 @@ export class DtPickup implements OnDestroy{
   pushsetup() {
     const options: PushOptions = {
      android: {
-         senderID: '<yoursenderidhere>'
+         senderID: '855550352798'
      },
      ios: {
          alert: 'true',
