@@ -3,6 +3,7 @@ import { NavController } from 'ionic-angular';
 import { AddRideTemplatePage } from '../add-ride-template/add-ride-template';
 import { AuthService } from '../../services/AuthService/auth.service';
 import { RideService } from '../../services/GeofireService/ride.service';
+import { RideProfilePage } from '../ride-profile/ride-profile';
 
 @Component({
   selector: 'page-home',
@@ -20,7 +21,11 @@ export class HomePage {
   }
 
   openAddProfile(){
-    this.navCtrl.push(AddRideTemplatePage)
+    this.navCtrl.push(AddRideTemplatePage);
+  }
+
+  showRideProfile(rideId: string) {
+    this.navCtrl.push(RideProfilePage, { rideId: rideId });
   }
 
 }

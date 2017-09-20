@@ -29,6 +29,7 @@ import { FillPipe } from '../pipes/pipes';
 import { SetLocationPage } from "../pages/set-location/set-location";
 import { RideTemplateService } from '../services/RideTemplateService/ride.template.service';
 import { RideService } from '../services/GeofireService/ride.service';
+import { RideProfilePage } from '../pages/ride-profile/ride-profile';
 
 @NgModule({
   declarations: [
@@ -38,7 +39,8 @@ import { RideService } from '../services/GeofireService/ride.service';
     ProfilePage,
     SetLocationPage,
     AddRideTemplatePage,
-    FillPipe
+    FillPipe,
+    RideProfilePage
   ],
   imports: [
     BrowserModule,
@@ -55,7 +57,8 @@ import { RideService } from '../services/GeofireService/ride.service';
     SetLocationPage,
     ProfilePage,
     LoginUserPage,
-    AddRideTemplatePage
+    AddRideTemplatePage,
+    RideProfilePage
   ], 
   providers: [
     StatusBar,
