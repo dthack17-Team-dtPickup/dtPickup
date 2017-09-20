@@ -30,6 +30,7 @@ import { SetLocationPage } from "../pages/set-location/set-location";
 import { RideTemplateService } from '../services/RideTemplateService/ride.template.service';
 import { RideService } from '../services/GeofireService/ride.service';
 import { RideProfilePage } from '../pages/ride-profile/ride-profile';
+import { Push } from '@ionic-native/push';
 
 @NgModule({
   declarations: [
@@ -68,6 +69,7 @@ import { RideProfilePage } from '../pages/ride-profile/ride-profile';
     ProfileService,
     RideTemplateService,
     RideService,
+    Push,
     { provide: ErrorHandler, useClass: IonicErrorHandler }
   ]
 })
