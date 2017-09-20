@@ -6,7 +6,7 @@ import { AuthService } from '../../services/AuthService/auth.service';
 import {Location} from '../../services/GeofireService/location.1'
 
 @Component({
-  selector: 'page-ride-profile',
+  selector: 'ride-profile',
   templateUrl: 'ride-profile.html'
 })
 

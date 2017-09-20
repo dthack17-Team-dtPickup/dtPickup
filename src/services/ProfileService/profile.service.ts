@@ -20,6 +20,7 @@ export class ProfileService {
 
 
     getProfile(id: string) {
+        if (id == '0001'){
         return { id: '0001', first_name:'Thorsten', company:'Deutsche Telekom AG',  name: 'Schmidt', rating: 4, 
         car: { id: '0001', make: 'VW', model: 'eGolf', colour: 'blue', seats: 5 }, 
         default_start:{
@@ -28,7 +29,32 @@ export class ProfileService {
             name:'Haupstraße 36'
         },
         routes:[] 
+
     }
+}
+if (id == '0002'){
+    return { id: '0001', first_name:'Andreas', company:'Telekom IT',  name: 'Keller', rating: 4, 
+    car: { id: '0001', make: 'VW', model: 'eGolf', colour: 'blue', seats: 5 }, 
+    default_start:{
+        coords:[0,1],
+        id:'1337',
+        name:'Haupstraße 36'
+    },
+    routes:[] 
+
+}
+}
+
+return { id: '0001', first_name:'Stefan', company:'Deutsche Telekom AG',  name: 'Mayer', rating: 4, 
+car: { id: '0001', make: 'VW', model: 'eGolf', colour: 'blue', seats: 5 }, 
+default_start:{
+    coords:[0,1],
+    id:'1337',
+    name:'Haupstraße 36'
+},
+routes:[] 
+
+}
     }
 
     getProfileFromId(id: string): Observable<any>{

@@ -46,8 +46,8 @@ export class RideService {
                creator: '0001',
                free_seats: 1,
                passengers: ['0002', '0003'],
-               pickupTime: '20.09.2017, 09:00 Uhr',
-               driverId: '0001',
+               pickupTime: '20.09.2017, 07:00 Uhr',
+               driverId: '0002',
                driver: {}
    
            },
@@ -62,8 +62,8 @@ export class RideService {
                creator: '0001',
                free_seats: 1,
                passengers: ['0002', '0003'],
-               pickupTime: '20.09.2017, 09:00 Uhr',
-               driverId: '0001',
+               pickupTime: '20.09.2017, 08:00 Uhr',
+               driverId: '0003',
                driver: {}
    
            }
