@@ -11,22 +11,24 @@
   <div text-center><img src="assets/img/Rectangle@1x.png" srcset="assets/img/Rectangle@2x.png 2x,
   assets/img/Rectangle@3x.png 3x,
   assets/img/Rectangle@4x.png 4x"></div>
+  
   <div class="CarName">{{ride.car.make}} {{ride.car.model}}</div>
   <div>{{ride.driver.car.color}}</div>
+ <div>
+  <!--  <span *ngFor="let i of ride.free_seats | async | fill" class="FreeSeat"></span> -->
+  <!--  <span *ngFor="let i of (ride.car.seats - ride.free_seats) | async | fill" class="TakenSeat"></span>
+  -->
+  </div> 
   <div>
-    <span *ngFor="let i of ride.free_seats | async | fill" class="FreeSeat"></span>
-    <span *ngFor="let i of (ride.car.seats - ride.free_seats) | async | fill" class="TakenSeat"></span>
+    <div><img src="assets/svg/arrow-start_solid.svg"/> {{startpoint.name}}</div>
   </div>
-  <div>
-    <div><img src="assets/svg/arrow-start_solid.svg"/> {{startpoint}}</div>
-  </div>
-  <ion-list *ngFor="let stop of stops">
+ <ion-list *ngFor="let stop of stops">
     <div>
-      <div><ion-icon name="locate"></ion-icon> {{stop.location}}</div>
-      <div>{{stop.pickuptime}}</div>
+      <div><ion-icon name="locate"></ion-icon> {{stop.name}}</div>
+ <!--     <div>{{stop.pickuptime}}</div> -->
     </div>
-  </ion-list>
+  </ion-list> 
   <div>
-    <div><img src="assets/svg/arrow-target_solid.svg"/> {{endpoint}}</div>
-  </div>
+    <div><img src="assets/svg/arrow-target_solid.svg"/> {{endpoint.name}}</div>
+  </div> -->
 </ion-content>
