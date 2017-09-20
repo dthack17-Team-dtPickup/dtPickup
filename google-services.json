@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "855550352798",
+    "firebase_url": "https://dtpickup-db355.firebaseio.com",
+    "project_id": "dtpickup-db355",
+    "storage_bucket": "dtpickup-db355.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:855550352798:android:488539368a6489b2",
+        "android_client_info": {
+          "package_name": "local.dtpickup"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "855550352798-uvta62d7h5nc25f9l3ds1k5q4r4lha8c.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBe5TFl7Aa27RETvzBXJ88SQRtk6ucDF9c"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
