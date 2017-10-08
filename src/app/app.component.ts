@@ -34,14 +34,14 @@ export class DtPickup implements OnDestroy{
     });
 
     this.user = auth.authState
-    this.user$ = this.user.subscribe(curAuth => curAuth ? this.rootPage = HomePage : this.rootPage = LoginUserPage);
+    this.user$ = this.user.subscribe(curAuth => curAuth ? this.rootPage = HomePage : this.rootPage = HomePage);
     
   }
 
   pushsetup() {
     const options: PushOptions = {
      android: {
-         senderID: '855550352798'
+
      },
      ios: {
          alert: 'true',

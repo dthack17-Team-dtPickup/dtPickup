@@ -26,21 +26,21 @@ export class AuthService {
 
   // returns true if User is logged in 
   get authenticated (): boolean {
-      return this.authState !== null;
+      return true;
   }
 
   //return firebase User Object if User is logged in
   get currentUser (): firebase.User{
-    return this.authenticated ? this.authState : null;
+    return null;
   }
   
   //if user logged in returns uid of logged in user
   get currentUserId(): string {
-    return this.authenticated ? this.authState.uid : '';
+    return '';
   }
 
   get currentUserAnonymous(): boolean{
-    return this.authenticated ? this.authState.isAnonymous : false
+    return false;
   }
 
   get currentUserDisplayName(): string{
@@ -85,10 +85,11 @@ export class AuthService {
   }*/
 
   emailLogin(email:string, password:string){
-       
-      this.auth.auth.signInWithEmailAndPassword(email, password)
+
+    this.auth.auth.signInWithEmailAndPassword(email, password)
                     .then( res => {return res})
                     .catch(err => {return err})
+                       
 
   }
 
@@ -116,6 +117,7 @@ export class AuthService {
   }
 
   createUserWithMail(user) {
+    /*
     let promise = new Promise((resolve, reject) => {
       this.auth.auth.createUserWithEmailAndPassword(user.email, user.password).then(() => {
         // once the user is created the userProfile will be updated with the username 
@@ -151,6 +153,6 @@ export class AuthService {
       }).catch((err) => { reject(err) })
     })
 
-    return promise;
-  }
+    return promise; */
+  } 
 }

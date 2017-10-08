@@ -24,8 +24,8 @@ export class LoginUserPage{
  
 
 login(){
-    this.showLoading()
-    this.authService.emailLogin(this.registerCredentials.email, this.registerCredentials.password)
+   this.showLoading()
+   this.authService.emailLogin(this.registerCredentials.email, this.registerCredentials.password)
 }
  
   showLoading() {
@@ -49,6 +49,6 @@ login(){
       subTitle: text,
       buttons: ['OK']
     });
-    alert.present(prompt);
+ 
   }
 }

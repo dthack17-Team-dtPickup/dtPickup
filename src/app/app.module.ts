@@ -31,6 +31,9 @@ import { RideTemplateService } from '../services/RideTemplateService/ride.templa
 import { RideService } from '../services/GeofireService/ride.service';
 import { RideProfilePage } from '../pages/ride-profile/ride-profile';
 import { Push } from '@ionic-native/push';
+import { RestapiServiceProvider } from '../providers/restapi-service/restapi-service';
+
+import { HttpModule } from '@angular/http';
 
 @NgModule({
   declarations: [
@@ -41,16 +44,20 @@ import { Push } from '@ionic-native/push';
     SetLocationPage,
     AddRideTemplatePage,
     FillPipe,
-    RideProfilePage
+    RideProfilePage,
   ],
+
   imports: [
     BrowserModule,
     FirebaseModule,
     SignupUserModule,
     AngularFireAuthModule,
     AngularFireDatabaseModule,
-    IonicModule.forRoot(DtPickup),
+    HttpModule,
+    IonicModule.forRoot(DtPickup)
+    
   ],
+  
   bootstrap: [IonicApp],
   entryComponents: [
     DtPickup,
@@ -66,11 +73,13 @@ import { Push } from '@ionic-native/push';
     SplashScreen,
     AuthService,
     GeoService,
+    {provide: ErrorHandler, useClass: IonicErrorHandler},
     ProfileService,
     RideTemplateService,
     RideService,
     Push,
-    { provide: ErrorHandler, useClass: IonicErrorHandler }
+    RestapiServiceProvider,
+
   ]
 })
-export class AppModule { }
+export class AppModule{ }

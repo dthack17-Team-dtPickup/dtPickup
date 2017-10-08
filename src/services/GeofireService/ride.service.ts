@@ -115,12 +115,7 @@ export class RideService {
         const location = this.createLocationArr(form_params)
         const aggregated_form = this.aggregateForm(form_params)
         //const aggregated_form = this.aggregateForm(form_params, location)
-        this.db.database.ref(`/rides`).push({[this.auth.currentUserId] : aggregated_form})
-            .then((snap) => {
-                const key = snap.key
-                this.geoService.setLocation(key, location)
-                this.setUserRide(key)
-            })
+       
 
     }
 
@@ -166,16 +161,10 @@ export class RideService {
 
 
     cancelRide(id: string) {
-        console.log("cancelRide called with id: " + id);
-        let tempRide = this.db.database.ref(id).once;
+       
 
 
-
-        const promise = this.db.database.ref('/rides/' + id).remove();
-        promise
-            .then(_ => console.log('success'))
-            .catch(err => console.log(err, 'You dont have access!'));
-        return true;
+      
     }
 
     getAcceptedRides(profileId: string) {

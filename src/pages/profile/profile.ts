@@ -11,12 +11,19 @@ import { RideTemplateService } from '../../services/RideTemplateService/ride.tem
 
 export class ProfilePage {
 
-  user_profile: any;
+  public user_profile: any;
   templates: any;
 
-  constructor(public navCtrl: NavController, auth: AuthService, profileService: ProfileService, rideTemplateService: RideTemplateService) {
-    this.user_profile = profileService.getProfile(auth.currentUserId);
+  constructor(public navCtrl: NavController, auth: AuthService,public profileService: ProfileService, rideTemplateService: RideTemplateService) {
+   this.loadPeople();
     this.templates = rideTemplateService.getRideTemplates(auth.currentUserId);
+  //  console.log('user_profile: ' + this.user_profile.name);
   }
 
+  loadPeople(){
+    this.profileService.getProfile('1')
+    .then(data => {
+      this.user_profile = data;
+    });
+  }
 }
